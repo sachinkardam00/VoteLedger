@@ -1,0 +1,25 @@
+{
+  "name": "votingdao-web3",
+  "version": "1.0.0",
+  "description": "VotingDAO Smart Contract - Hardhat Project",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:megaeth": "hardhat run scripts/deploy.js --network megaeth",
+    "verify": "hardhat verify"
+  },
+  "keywords": ["blockchain", "solidity", "dao", "voting"],
+  "author": "VotingDAO Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^16.3.1"
+  }
+}
