@@ -45,32 +45,35 @@
 
 ### 🎯 Why VoteLedger?
 
-| Traditional Voting | VoteLedger |
-|-------------------|------------|
-| ❌ Centralized control | ✅ Fully decentralized |
-| ❌ Opaque processes | ✅ Complete transparency |
-| ❌ Vulnerable to manipulation | ✅ Blockchain-secured |
-| ❌ Slow result processing | ✅ Real-time updates |
-| ❌ Limited accessibility | ✅ Web3 wallet integration |
-| ❌ No audit trail | ✅ Immutable blockchain records |
+| Traditional Voting            | VoteLedger                      |
+| ----------------------------- | ------------------------------- |
+| ❌ Centralized control        | ✅ Fully decentralized          |
+| ❌ Opaque processes           | ✅ Complete transparency        |
+| ❌ Vulnerable to manipulation | ✅ Blockchain-secured           |
+| ❌ Slow result processing     | ✅ Real-time updates            |
+| ❌ Limited accessibility      | ✅ Web3 wallet integration      |
+| ❌ No audit trail             | ✅ Immutable blockchain records |
 
 ---
 
 ## ✨ Key Features
 
 ### 🔐 **Blockchain Security**
+
 - Smart contracts written in Solidity ^0.8.20
 - Deployed on MegaETH Chain (Chain ID: 6342)
 - Ownable2Step pattern for secure ownership transfer
 - Immutable vote records on blockchain
 
 ### ⚡ **Real-Time Updates**
+
 - Event-driven architecture for instant UI updates
 - No polling delays - updates in milliseconds
 - Cross-page synchronization using custom event bus
 - Optimized for MegaETH's fast transaction confirmation
 
 ### 👤 **User Features**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  VOTER REGISTRATION                                 │
@@ -96,12 +99,14 @@
 ```
 
 ### 🎨 **Profile Pictures**
+
 - Upload profile pictures (JPG, PNG, GIF, WebP)
 - Stored on **IPFS via Pinata** for decentralization
 - Max 5MB file size
 - Displayed in voting and results sections
 
 ### 👑 **Admin Dashboard**
+
 ```mermaid
 graph LR
     A[Admin Dashboard] --> B[Open Registration]
@@ -114,15 +119,16 @@ graph LR
 ```
 
 ### 🌐 **Multi-Wallet Support**
+
 <div align="center">
 
-| Wallet | Support |
-|--------|---------|
-| 🦊 MetaMask | ✅ |
-| 🌈 Rainbow | ✅ |
-| 💰 Coinbase Wallet | ✅ |
-| 🔗 WalletConnect | ✅ |
-| 🔷 Trust Wallet | ✅ |
+| Wallet             | Support |
+| ------------------ | ------- |
+| 🦊 MetaMask        | ✅      |
+| 🌈 Rainbow         | ✅      |
+| 💰 Coinbase Wallet | ✅      |
+| 🔗 WalletConnect   | ✅      |
+| 🔷 Trust Wallet    | ✅      |
 
 </div>
 
@@ -131,6 +137,7 @@ graph LR
 ## 🛠️ Technology Stack
 
 ### **Smart Contract Layer**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Solidity ^0.8.20                                   │
@@ -141,6 +148,7 @@ graph LR
 ```
 
 ### **Blockchain Infrastructure**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Hardhat 2.19.0                                     │
@@ -152,6 +160,7 @@ graph LR
 ```
 
 ### **Frontend Stack**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  React 18.2.0 + Vite 5.4.21                        │
@@ -177,6 +186,7 @@ graph LR
 ```
 
 ### **Storage Layer**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  IPFS (Pinata)                                      │
@@ -422,6 +432,7 @@ npm run build
 ### **For Voters**
 
 #### **Step 1: Connect Wallet**
+
 ```
 1. Click "Connect Wallet" button
 2. Choose your preferred wallet
@@ -430,6 +441,7 @@ npm run build
 ```
 
 #### **Step 2: Register as Voter**
+
 ```
 1. Navigate to "Registration" tab
 2. Click "Register as Voter"
@@ -441,6 +453,7 @@ npm run build
 ```
 
 #### **Step 3: Cast Vote**
+
 ```
 1. Wait for admin to start voting period
 2. Navigate to "Vote" tab
@@ -452,6 +465,7 @@ npm run build
 ```
 
 #### **Step 4: View Results**
+
 ```
 1. After voting ends
 2. Navigate to "Results" tab
@@ -474,6 +488,7 @@ npm run build
 ### **For Admins (Contract Owner)**
 
 #### **Admin Dashboard Access**
+
 ```
 ✅ Only contract owner sees Admin Dashboard
 ✅ Located in top navigation
@@ -538,16 +553,16 @@ pragma solidity ^0.8.20;
 contract VotingDAO {
     // Ownership
     address public owner;
-    
+
     // Election Status
-    enum Status { 
-        RegistrationOpen, 
-        RegistrationClosed, 
-        Voting, 
-        Paused, 
-        Ended 
+    enum Status {
+        RegistrationOpen,
+        RegistrationClosed,
+        Voting,
+        Paused,
+        Ended
     }
-    
+
     // Data Structures
     struct Voter {
         bool isRegistered;
@@ -556,7 +571,7 @@ contract VotingDAO {
         string name;
         string profilePic;  // IPFS hash
     }
-    
+
     struct Candidate {
         bool isRegistered;
         uint256 voteCount;
@@ -568,20 +583,20 @@ contract VotingDAO {
 
 ### **Key Functions**
 
-| Function | Access | Description |
-|----------|--------|-------------|
-| `startRegistration()` | Owner | Opens registration period |
-| `closeRegistration()` | Owner | Closes registration |
-| `startVoting(uint256)` | Owner | Starts voting with duration |
-| `pauseElection()` | Owner | Pauses ongoing voting |
-| `restartVoting(uint256)` | Owner | Resumes voting |
-| `endElection()` | Owner | Ends election & calculates winner |
-| `registerAsVoter(string, string)` | Public | Register as voter with name & profile |
+| Function                              | Access | Description                               |
+| ------------------------------------- | ------ | ----------------------------------------- |
+| `startRegistration()`                 | Owner  | Opens registration period                 |
+| `closeRegistration()`                 | Owner  | Closes registration                       |
+| `startVoting(uint256)`                | Owner  | Starts voting with duration               |
+| `pauseElection()`                     | Owner  | Pauses ongoing voting                     |
+| `restartVoting(uint256)`              | Owner  | Resumes voting                            |
+| `endElection()`                       | Owner  | Ends election & calculates winner         |
+| `registerAsVoter(string, string)`     | Public | Register as voter with name & profile     |
 | `registerAsCandidate(string, string)` | Public | Register as candidate with name & profile |
-| `vote(address)` | Public | Cast vote for a candidate |
-| `getWinner()` | Public | Returns winner address |
-| `getCandidateInfo(address)` | Public | Get candidate details |
-| `getVoterInfo(address)` | Public | Get voter details |
+| `vote(address)`                       | Public | Cast vote for a candidate                 |
+| `getWinner()`                         | Public | Returns winner address                    |
+| `getCandidateInfo(address)`           | Public | Get candidate details                     |
+| `getVoterInfo(address)`               | Public | Get voter details                         |
 
 ### **Events**
 
@@ -625,6 +640,7 @@ client/src/
 ### **Key Hooks**
 
 #### **useContractWrite**
+
 ```javascript
 const contractMethods = useContractWrite();
 
@@ -635,16 +651,17 @@ await contractMethods.startVoting(durationInHours);
 ```
 
 #### **useElectionStateWagmi**
+
 ```javascript
 const electionState = useElectionStateWagmi();
 
 // State access
-electionState.status          // Current election status
-electionState.candidates      // Array of candidates
-electionState.currentVoter    // Current user info
-electionState.isOwner         // Is current user owner?
-electionState.totalVotesCast  // Total votes
-electionState.refresh()       // Manual refresh
+electionState.status; // Current election status
+electionState.candidates; // Array of candidates
+electionState.currentVoter; // Current user info
+electionState.isOwner; // Is current user owner?
+electionState.totalVotesCast; // Total votes
+electionState.refresh(); // Manual refresh
 ```
 
 ### **Event Bus System**
@@ -655,7 +672,7 @@ eventBus.emit(EVENTS.CANDIDATE_REGISTERED);
 
 // Listen for events (auto-refresh)
 eventBus.on(EVENTS.ELECTION_UPDATED, () => {
-    electionState.refresh();
+  electionState.refresh();
 });
 ```
 
@@ -733,6 +750,7 @@ node scripts/exportABI.js
 ### **Deploy Frontend**
 
 #### **Vercel**
+
 ```bash
 cd client
 npm run build
@@ -740,6 +758,7 @@ npm run build
 ```
 
 #### **Netlify**
+
 ```bash
 cd client
 npm run build
@@ -753,16 +772,19 @@ npm run build
 We welcome contributions! Here's how:
 
 ### **Step 1: Fork Repository**
+
 ```bash
 # Click "Fork" button on GitHub
 ```
 
 ### **Step 2: Create Feature Branch**
+
 ```bash
 git checkout -b feature/amazing-feature
 ```
 
 ### **Step 3: Make Changes**
+
 ```bash
 # Make your changes
 git add .
@@ -770,6 +792,7 @@ git commit -m "Add amazing feature"
 ```
 
 ### **Step 4: Push & Create PR**
+
 ```bash
 git push origin feature/amazing-feature
 # Create Pull Request on GitHub
@@ -808,18 +831,21 @@ Built with ❤️ by the VoteLedger Team
 ## 🗺️ Roadmap
 
 ### **Phase 1: Core Features** ✅
+
 - [x] Smart contract implementation
 - [x] Frontend with Wagmi/RainbowKit
 - [x] IPFS profile pictures
 - [x] Real-time updates
 
 ### **Phase 2: Enhancements** 🚧
+
 - [ ] Multi-language support
 - [ ] Advanced analytics dashboard
 - [ ] Email notifications
 - [ ] Mobile app (React Native)
 
 ### **Phase 3: Advanced Features** 📋
+
 - [ ] Delegate voting
 - [ ] Quadratic voting
 - [ ] DAO governance integration

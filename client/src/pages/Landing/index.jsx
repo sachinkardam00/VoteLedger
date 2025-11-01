@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import './LandingPage.css';
+import './styles.css';
 
 const LandingPage = ({ onEnterApp }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -317,8 +317,6 @@ const LandingPage = ({ onEnterApp }) => {
           </div>
         </div>
       </footer>
-
-      {/* CSS is handled via Tailwind and inline styles */}
     </div>
   );
 };
