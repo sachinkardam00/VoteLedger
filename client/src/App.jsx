@@ -46,13 +46,9 @@ function App() {
     }
   }, []);
 
-  // Show landing page first
-  if (showLanding) {
-    return <LandingPage onEnterApp={() => setShowLanding(false)} />;
-  }
-
   // Auto-select view based on election status (only on initial load, not after manual navigation)
   useEffect(() => {
+    if (showLanding) return; // Don't run when landing page is shown
     if (!electionState.status && electionState.status !== 0) return;
     if (hasManuallyNavigated) return; // Don't auto-redirect if user manually navigated
 
@@ -65,7 +61,12 @@ function App() {
         setActiveView('voting');
       }
     }
-  }, [electionState.status, electionState.isOwner, electionState.currentVoter, activeView, hasManuallyNavigated]);
+  }, [showLanding, electionState.status, electionState.isOwner, electionState.currentVoter, activeView, hasManuallyNavigated]);
+
+  // Show landing page first (after all hooks have been called)
+  if (showLanding) {
+    return <LandingPage onEnterApp={() => setShowLanding(false)} />;
+  }
 
   // Render navigation
   const renderNavigation = () => (
