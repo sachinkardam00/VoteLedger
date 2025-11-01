@@ -59,32 +59,38 @@ src/
 ## 🎯 Benefits of This Structure
 
 ### 1. **Modularity**
+
 - Each feature/page is self-contained in its own folder
 - Easy to locate and modify specific functionality
 - Reduces merge conflicts in team development
 
 ### 2. **Scalability**
+
 - Easy to add new pages, components, or services
 - Clear separation of concerns
 - Barrel exports (`index.js`) make imports cleaner
 
 ### 3. **Maintainability**
+
 - Consistent organization makes onboarding easier
 - Related files are grouped together
 - Clear naming conventions
 
 ### 4. **Clean Imports**
+
 Instead of:
+
 ```jsx
-import LandingPage from './pages/LandingPage';
-import AdminDashboard from './pages/AdminDashboard';
-import useElectionStateWagmi from './hooks/useElectionStateWagmi';
+import LandingPage from "./pages/LandingPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import useElectionStateWagmi from "./hooks/useElectionStateWagmi";
 ```
 
 You can write:
+
 ```jsx
-import { LandingPage, AdminDashboard } from '@/pages';
-import { useElectionStateWagmi } from '@/hooks';
+import { LandingPage, AdminDashboard } from "@/pages";
+import { useElectionStateWagmi } from "@/hooks";
 ```
 
 ## 📝 Naming Conventions
@@ -97,32 +103,36 @@ import { useElectionStateWagmi } from '@/hooks';
 ## 🔄 Adding New Features
 
 ### Adding a New Page:
+
 1. Create folder: `src/pages/NewPage/`
 2. Create component: `src/pages/NewPage/index.jsx`
 3. Add styles (if needed): `src/pages/NewPage/styles.css`
 4. Export in `src/pages/index.js`:
    ```js
-   export { default as NewPage } from './NewPage';
+   export { default as NewPage } from "./NewPage";
    ```
 
 ### Adding a New Component:
+
 1. Determine if it's layout or shared
 2. Create in appropriate folder: `src/components/shared/Button.jsx`
 3. Export in `src/components/shared/index.js`:
    ```js
-   export { default as Button } from './Button';
+   export { default as Button } from "./Button";
    ```
 
 ### Adding a New Hook:
+
 1. Create in `src/hooks/useNewHook.js`
 2. Export in `src/hooks/index.js`:
    ```js
-   export { default as useNewHook } from './useNewHook';
+   export { default as useNewHook } from "./useNewHook";
    ```
 
 ## 🎨 Component Organization
 
 Each page folder can contain:
+
 - `index.jsx` - Main component
 - `styles.css` - Component-specific styles
 - `components/` - Page-specific sub-components (if needed)
@@ -135,12 +145,12 @@ Barrel files simplify imports and provide a clean public API:
 
 ```js
 // src/pages/index.js
-export { default as LandingPage } from './Landing';
-export { default as HomePage } from './Home';
-export { default as AdminDashboard } from './Admin';
-export { default as RegistrationPage } from './Registration';
-export { default as VotingPage } from './Voting';
-export { default as ResultsPage } from './Results';
+export { default as LandingPage } from "./Landing";
+export { default as HomePage } from "./Home";
+export { default as AdminDashboard } from "./Admin";
+export { default as RegistrationPage } from "./Registration";
+export { default as VotingPage } from "./Voting";
+export { default as ResultsPage } from "./Results";
 ```
 
 ## 🚀 Quick Start
@@ -149,10 +159,10 @@ After restructuring, imports in your components look like this:
 
 ```jsx
 // App.jsx
-import { Navigation } from '@/components';
-import { LandingPage, HomePage, AdminDashboard } from '@/pages';
-import { useElectionStateWagmi, useContractWrite } from '@/hooks';
-import { ElectionStatus, validateConfig } from '@/config';
+import { Navigation } from "@/components";
+import { LandingPage, HomePage, AdminDashboard } from "@/pages";
+import { useElectionStateWagmi, useContractWrite } from "@/hooks";
+import { ElectionStatus, validateConfig } from "@/config";
 ```
 
 All path aliases (`@/...`) are configured in `vite.config.js`.

@@ -7,6 +7,7 @@ Successfully reorganized the entire frontend codebase into a professional, scala
 ## 📊 Before vs After
 
 ### **BEFORE** ❌
+
 ```
 src/
 ├── App.jsx
@@ -35,6 +36,7 @@ src/
 ```
 
 ### **AFTER** ✅
+
 ```
 src/
 ├── assets/               ✨ NEW - For images, icons, etc.
@@ -92,6 +94,7 @@ src/
 ## 🔧 Key Changes Made
 
 ### 1. **Created Organized Folder Structure**
+
 - ✅ Added `assets/images/` for static files
 - ✅ Created `components/layout/` for layout components
 - ✅ Created `components/shared/` for reusable UI components
@@ -99,12 +102,15 @@ src/
 - ✅ Organized each page into its own folder
 
 ### 2. **Extracted Components**
+
 - ✅ Moved navigation from `App.jsx` to `components/layout/Navigation.jsx`
 - ✅ Created `HomePage` component (extracted from App.jsx)
 - ✅ Each page now in dedicated folder with co-located styles
 
 ### 3. **Implemented Barrel Exports**
+
 Created `index.js` files in:
+
 - ✅ `components/` - Clean component imports
 - ✅ `hooks/` - Unified hook exports
 - ✅ `pages/` - Single import for all pages
@@ -112,22 +118,26 @@ Created `index.js` files in:
 - ✅ `utils/` - Utility function exports
 
 ### 4. **Updated All Imports**
+
 **Before:**
+
 ```jsx
-import LandingPage from './pages/LandingPage';
-import AdminDashboard from './pages/AdminDashboard';
-import { useElectionStateWagmi } from './hooks/useElectionStateWagmi';
-import { useContractWrite } from './hooks/useContractWrite';
+import LandingPage from "./pages/LandingPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import { useElectionStateWagmi } from "./hooks/useElectionStateWagmi";
+import { useContractWrite } from "./hooks/useContractWrite";
 ```
 
 **After:**
+
 ```jsx
-import { LandingPage, AdminDashboard, HomePage } from '@/pages';
-import { useElectionStateWagmi, useContractWrite } from '@/hooks';
-import { Navigation } from '@/components';
+import { LandingPage, AdminDashboard, HomePage } from "@/pages";
+import { useElectionStateWagmi, useContractWrite } from "@/hooks";
+import { Navigation } from "@/components";
 ```
 
 ### 5. **Cleaned Up**
+
 - ✅ Removed old duplicate files
 - ✅ Removed unused `useElectionState.js` hook
 - ✅ Moved `index.css` → `styles/global.css`
@@ -136,26 +146,31 @@ import { Navigation } from '@/components';
 ## 📈 Benefits Achieved
 
 ### **1. Modularity** 🧩
+
 - Each feature/page is self-contained
 - Easy to locate and modify specific functionality
 - Reduced coupling between components
 
 ### **2. Scalability** 📈
+
 - Easy to add new pages: just create a folder
 - Easy to add new components: organized by category
 - Clear patterns for new developers to follow
 
 ### **3. Maintainability** 🔧
+
 - Related files grouped together
 - Consistent organization across the project
 - Easier code reviews and debugging
 
 ### **4. Developer Experience** 👨‍💻
+
 - Cleaner imports with barrel exports
 - Less typing, more productivity
 - IntelliSense works better with organized structure
 
 ### **5. Team Collaboration** 👥
+
 - Reduced merge conflicts
 - Clear ownership of files
 - Easier onboarding for new team members
@@ -170,6 +185,7 @@ Net Change:        -43 lines (cleaner code!)
 ```
 
 ### **New Files Created:**
+
 - `client/STRUCTURE.md` - Complete documentation
 - `client/src/components/layout/Navigation.jsx`
 - `client/src/components/layout/index.js`
@@ -183,6 +199,7 @@ Net Change:        -43 lines (cleaner code!)
 - `client/src/styles/global.css`
 
 ### **Files Moved/Renamed:**
+
 - `LandingPage.jsx` → `pages/Landing/index.jsx`
 - `LandingPage.css` → `pages/Landing/styles.css`
 - `AdminDashboard.jsx` → `pages/Admin/index.jsx`
@@ -192,12 +209,14 @@ Net Change:        -43 lines (cleaner code!)
 - `index.css` → `styles/global.css`
 
 ### **Files Deleted:**
+
 - Old duplicate page files (after moving)
 - `hooks/useElectionState.js` (unused)
 
 ## 🎯 Quick Start Guide
 
 ### Adding a New Page:
+
 ```bash
 # 1. Create folder
 mkdir src/pages/NewPage
@@ -214,6 +233,7 @@ import { NewPage } from '@/pages';
 ```
 
 ### Adding a New Component:
+
 ```bash
 # 1. Create in shared
 echo 'export default function Button() {}' > src/components/shared/Button.jsx
@@ -240,6 +260,7 @@ import { Button } from '@/components';
 ## 📦 Commit & Push
 
 Successfully committed and pushed to GitHub:
+
 ```
 Commit: 9c59a2f
 Message: Restructure frontend with organized directory structure
@@ -250,6 +271,7 @@ Status: ✅ Pushed to main branch
 ## 🎓 Documentation
 
 Created comprehensive documentation in `client/STRUCTURE.md`:
+
 - Directory structure explanation
 - Benefits of the organization
 - Naming conventions
@@ -261,6 +283,7 @@ Created comprehensive documentation in `client/STRUCTURE.md`:
 ## 🚀 Next Steps
 
 Your codebase is now ready for:
+
 1. ✅ Easy feature additions
 2. ✅ Team collaboration
 3. ✅ Scaling to larger application
@@ -273,6 +296,7 @@ The VoteLedger frontend has been successfully restructured from a flat directory
 **No logic was changed. No features were broken. Everything works exactly as before, but now it's organized professionally!**
 
 ---
+
 **Restructured by:** GitHub Copilot
 **Date:** November 2, 2025
 **Status:** ✅ Complete and Deployed
