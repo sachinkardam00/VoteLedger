@@ -4,12 +4,14 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useElectionStateWagmi } from '@/hooks/useElectionStateWagmi';
 import { useContractWrite } from '@/hooks/useContractWrite';
 import { ElectionStatus, validateConfig } from '@config';
+import LandingPage from '@/pages/LandingPage';
 import AdminDashboard from '@/pages/AdminDashboard';
 import RegistrationPage from '@/pages/RegistrationPage';
 import VotingPage from '@/pages/VotingPage';
 import ResultsPage from '@/pages/ResultsPage';
 
 function App() {
+  const [showLanding, setShowLanding] = useState(true);
   const [activeView, setActiveView] = useState('home');
   const [configError, setConfigError] = useState(null);
   const [hasManuallyNavigated, setHasManuallyNavigated] = useState(false);
@@ -43,6 +45,11 @@ function App() {
       setConfigError(errors.join(', '));
     }
   }, []);
+
+  // Show landing page first
+  if (showLanding) {
+    return <LandingPage onEnterApp={() => setShowLanding(false)} />;
+  }
 
   // Auto-select view based on election status (only on initial load, not after manual navigation)
   useEffect(() => {
