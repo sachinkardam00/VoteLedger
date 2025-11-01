@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import './LandingPage.css';
 
 const LandingPage = ({ onEnterApp }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -317,34 +318,7 @@ const LandingPage = ({ onEnterApp }) => {
         </div>
       </footer>
 
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-        
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-      `}</style>
+      {/* CSS is handled via Tailwind and inline styles */}
     </div>
   );
 };
