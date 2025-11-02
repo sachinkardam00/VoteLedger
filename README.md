@@ -727,7 +727,51 @@ npm run test
 
 ## 🌐 Deployment
 
-### **Deploy to MegaETH Mainnet**
+### **🚀 Quick Vercel Deployment**
+
+VoteLedger is ready for **one-click deployment** to Vercel!
+
+#### **Prerequisites**
+
+- [ ] Smart contract deployed on MegaETH
+- [ ] Pinata API credentials
+- [ ] WalletConnect Project ID
+
+#### **Deploy in 3 Steps:**
+
+1. **Import to Vercel**
+
+   - Go to [Vercel Dashboard](https://vercel.com/new)
+   - Import your GitHub repository
+   - **Framework Preset:** Select **"Vite"** ⚠️ IMPORTANT
+   - **Root Directory:** `client`
+
+2. **Add Environment Variables**
+
+   ```env
+   VITE_CONTRACT_ADDRESS=your_contract_address
+   VITE_CHAIN_ID=6342
+   VITE_CHAIN_RPC_URL=https://carrot.megaeth.com/rpc
+   VITE_WALLETCONNECT_PROJECT_ID=your_walletconnect_id
+   VITE_PINATA_JWT=your_pinata_jwt
+   VITE_IPFS_GATEWAY=https://gateway.pinata.cloud/ipfs/
+   ```
+
+3. **Deploy!** 🎉
+
+📖 **Detailed Guide:** See [`VERCEL_DEPLOYMENT.md`](./VERCEL_DEPLOYMENT.md) for complete instructions  
+⚡ **Quick Reference:** See [`DEPLOYMENT_QUICK_START.md`](./DEPLOYMENT_QUICK_START.md)
+
+#### **Verify Your Deployment:**
+
+```bash
+# Run deployment readiness check
+node check-deployment.js
+```
+
+---
+
+### **Deploy Smart Contract to MegaETH**
 
 ```bash
 cd web3
@@ -747,15 +791,9 @@ npx hardhat run scripts/acceptOwnership.js --network megaeth
 node scripts/exportABI.js
 ```
 
-### **Deploy Frontend**
+---
 
-#### **Vercel**
-
-```bash
-cd client
-npm run build
-# Deploy to Vercel via GUI or CLI
-```
+### **Alternative Frontend Deployments**
 
 #### **Netlify**
 
@@ -763,6 +801,14 @@ npm run build
 cd client
 npm run build
 # Drag & drop 'dist' folder to Netlify
+```
+
+#### **GitHub Pages**
+
+```bash
+cd client
+npm run build
+# Deploy 'dist' folder to gh-pages branch
 ```
 
 ---
